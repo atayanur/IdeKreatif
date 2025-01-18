@@ -1,17 +1,10 @@
 <?php
-session_start();
-
+session_start; //inisialisasi session 
+session_start(); //inisialisasi session 
+//ambil notifikasi jika ada, kemudian hapus dari sesi
 $notification = $_SESSION['notification'] ?? null;
 if ($notification){
-  unset($_SESSION['notification'])
- 
-  if (isset($_SESSION["username"]) || isset($_SESSION["role"])) {
-    $_SERVER['notification'] = [
-      'type' => 'danger',
-      'message' => 'Silahkan Logout Terlebih dahulu!'
-    ];
-    header('location: ../dashboard.php');
-  }
+  unset($_SESSION['notification']);
 }
 ?>
 
@@ -45,4 +38,3 @@ if ($notification){
     <?php include '../.includes/toast_notification.php'; ?>
     <div class="container-xxl">
       <div class="authentication-wrapper authentication-basic container-p-y">
-        <div class="authentication-inner">

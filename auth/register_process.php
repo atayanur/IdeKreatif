@@ -8,9 +8,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
     $password = $_POST["password"];
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    $sql = "INSERT INTO user (username, name, password)
+    $sql = "INSERT INTO users (username, name, password)
     VALUES ('$username', '$name', '$hashedPassword')";
-    if ($conn->query($Sql) === TRUE) {
+   if ($conn->query($sql) === TRUE){
+
+   }
+
         $_SESSION['notification'] = [
             'type' => 'primary',
             'message' => 'Registrasi Berhasil!'
@@ -23,6 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     header('Location: login.php');
     exit();
-}
+
 $conn->close();
 ?>

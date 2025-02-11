@@ -1,10 +1,16 @@
 <?php
-session_start; //inisialisasi session 
 session_start(); //inisialisasi session 
 //ambil notifikasi jika ada, kemudian hapus dari sesi
 $notification = $_SESSION['notification'] ?? null;
 if ($notification){
   unset($_SESSION['notification']);
+}
+if (isset($_SESSION["username"]) || isset($_SESSION["role"])){
+  $_SESSION['notification'] = [
+    'type' => 'danger',
+    'message' => 'silahkan logout terlebih dahulu!'
+  ];
+  header ('Location: ..//dashboard.php');
 }
 ?>
 
